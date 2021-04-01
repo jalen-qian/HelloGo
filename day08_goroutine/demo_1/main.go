@@ -18,13 +18,13 @@ goroutine对应一个函数，开启的方式非常简单，在调用函数的�
 
 func hello() {
 	fmt.Println("hello 我是子goroutine")
-	//当子goroutine执行完，waitGroup的计数器减一
+	// 当子goroutine执行完，waitGroup的计数器减一
 	wg.Done()
 }
 
 func hello1(i int) {
 	fmt.Println("hello 我是子goroutine", i)
-	//当子goroutine执行完，waitGroup的计数器减一
+	// 当子goroutine执行完，waitGroup的计数器减一
 	wg.Done()
 }
 
@@ -38,8 +38,8 @@ func demo1() {
 	//go hello()
 	//fmt.Println("hello 我是main")
 
-	//我们可以调用 time.Sleep()，但是这种方式太生硬了，不建议使用
-	//正确的做法是，使用 sync.WaitGroup
+	// 我们可以调用 time.Sleep()，但是这种方式太生硬了，不建议使用
+	// 正确的做法是，使用 sync.WaitGroup
 	wg.Add(1)
 	/*
 		hello 我是main
@@ -63,9 +63,9 @@ func demo1() {
   这是因为goroutine是并发执行的，没有先后顺序
 */
 func demo2() {
-	//直接增加100000计数器
+	// 直接增加100000计数器
 	wg.Add(100000)
-	//开启100000个goroutine
+	// 开启100000个goroutine
 	for i := 0; i < 100000; i++ {
 		go hello1(i)
 	}
@@ -89,7 +89,7 @@ func demo3() {
 		//	wg.Done()
 		//}()
 
-		//正确写法，将i作为参数传入匿名函数中，此时打印正确
+		// 正确写法，将i作为参数传入匿名函数中，此时打印正确
 		go func(i int) {
 			fmt.Println("hello 我是子goroutine", i)
 			wg.Done()
@@ -98,9 +98,9 @@ func demo3() {
 }
 
 func main() {
-	//demo1()
+	// demo1()
 
-	//demo2()
+	// demo2()
 
 	demo3()
 	fmt.Println("hello 我是main")

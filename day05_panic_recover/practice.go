@@ -24,7 +24,7 @@ var (
 
 func dispatchCoin() int {
 	left := coins
-	//匿名函数，计算名字对应的coin数量
+	// 匿名函数，计算名字对应的coin数量
 	calcCoins := func(name string) int {
 		coinNum := 0
 		for _, s := range name {
@@ -44,7 +44,7 @@ func dispatchCoin() int {
 		return coinNum
 	}
 	for _, user := range users {
-		//计算分配的个数
+		// 计算分配的个数
 		disNum := calcCoins(user)
 		if left <= 0 {
 			disNum = 0

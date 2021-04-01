@@ -12,9 +12,8 @@ type Car interface {
 	Back()
 }
 
-//定义丰田汽车结构体，并实现Car接口
-type ToyotaCar struct {
-}
+// 定义丰田汽车结构体，并实现Car接口
+type ToyotaCar struct{}
 
 /**
 实现Car接口的Drive方法
@@ -30,21 +29,22 @@ func (toyotaCar ToyotaCar) Back() {
 	fmt.Println("我是丰田车，正在倒车。。。")
 }
 
-type BMWCar struct {
-}
+type BMWCar struct{}
 
 func (bmwCar BMWCar) Drive() {
 	fmt.Println("我是宝马车，正在驾驶。。。")
 }
+
 func (bmwCar BMWCar) Back() {
 	fmt.Println("我是宝马车，正在倒车。。。")
 }
+
 func (bmwCar BMWCar) Park() {
 	fmt.Println("我是宝马车，正在停车。。。")
 }
 
 func main() {
-	//声明Car接口的实例，并通过强转指向ToyotaCar结构体的实例
+	// 声明Car接口的实例，并通过强转指向ToyotaCar结构体的实例
 	var car Car = new(ToyotaCar)
 	/*
 		我是丰田车，正在驾驶。。。
@@ -63,5 +63,5 @@ func main() {
 	*/
 	bmwCar.Drive()
 	bmwCar.Back()
-	//bmwCar.Park()//bmwCar.Park undefined (type Car has no field or method Park)
+	// bmwCar.Park()//bmwCar.Park undefined (type Car has no field or method Park)
 }

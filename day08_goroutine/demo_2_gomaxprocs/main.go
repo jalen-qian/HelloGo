@@ -21,7 +21,7 @@ Go1.5版本之前，默认使用的是单核心执行。Go1.5版本之后，默�
 func a() {
 	for i := 0; i < 10; i++ {
 		fmt.Printf("A: %d\n", i)
-		time.Sleep(time.Millisecond * 100) //100毫秒
+		time.Sleep(time.Millisecond * 100) // 100毫秒
 	}
 	wg.Done()
 }
@@ -29,7 +29,7 @@ func a() {
 func b() {
 	for i := 0; i < 10; i++ {
 		fmt.Printf("B: %d\n", i)
-		time.Sleep(time.Millisecond * 100) //100毫秒
+		time.Sleep(time.Millisecond * 100) // 100毫秒
 	}
 	wg.Done()
 }
@@ -63,13 +63,13 @@ B: 9
 
 */
 func demo1() {
-	//设置核心数， 用runtime.GOMAXPROCS()，这里设置单个核心
+	// 设置核心数， 用runtime.GOMAXPROCS()，这里设置单个核心
 	runtime.GOMAXPROCS(6)
 	wg.Add(2)
 	go a()
 	go b()
 
-	//等待 a b都运行完再结束主goroutine
+	// 等待 a b都运行完再结束主goroutine
 	wg.Wait()
 }
 

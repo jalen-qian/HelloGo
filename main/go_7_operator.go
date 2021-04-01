@@ -7,7 +7,7 @@ func main() {
 	var b int = 10
 	var c int
 
-	//go语言的运算符
+	// go语言的运算符
 	c = a + b
 	fmt.Printf("第一行 - c 的值为 %d\n", c)
 	c = a - b
@@ -24,8 +24,8 @@ func main() {
 	a--
 	fmt.Printf("第七行 - a 的值为 %d\n", a)
 
-	//位运算符 & | ^ << >>
-	//按位与运算&
+	// 位运算符 & | ^ << >>
+	// 按位与运算&
 	var d, e uint = 60, 13
 	var f uint
 	f = d & e
@@ -35,11 +35,10 @@ func main() {
 	f = d ^ e
 	fmt.Printf("d ^ e = %d\n", f) // d ^ e = 49
 
-	f = d << 2                     //左移两位，相当于乘以4
+	f = d << 2                     // 左移两位，相当于乘以4
 	fmt.Printf("d << 2 = %d\n", f) // d << 2 = 240
-	f = d >> 2                     //左移两位，相当于除以4
+	f = d >> 2                     // 左移两位，相当于除以4
 	fmt.Printf("d >> 2 = %d\n", f) // d >> 2 = 15
-	f = d >> 3                     //右移三位，相当于除以8
+	f = d >> 3                     // 右移三位，相当于除以8
 	fmt.Printf("d >> 3 = %d\n", f) // d >> 2 = 7
-
 }

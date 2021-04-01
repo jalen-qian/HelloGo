@@ -9,8 +9,8 @@ import "fmt"
 func findPrimeNum(scope int) []int {
 	var a []int
 	var isPrime bool
-	//质数：大于1的自然数中，只能被1和自身整除的数是质数
-	index := 0 //统计总共执行的次数，并打印
+	// 质数：大于1的自然数中，只能被1和自身整除的数是质数
+	index := 0 // 统计总共执行的次数，并打印
 	for i := 2; i <= scope; i++ {
 		isPrime = true
 		for j := 2; j < i; j++ {
@@ -38,8 +38,8 @@ func findPrimeNum(scope int) []int {
  */
 func findPrimeNum2(scope int) []int {
 	var a []int
-	index := 0 //统计总共执行的次数，并打印
-	//质数：大于1的自然数中，只能被1和自身整除的数是质数
+	index := 0 // 统计总共执行的次数，并打印
+	// 质数：大于1的自然数中，只能被1和自身整除的数是质数
 	var i, j int
 	for i = 2; i <= scope; i++ {
 		for j = 2; j <= (i / j); j++ {
@@ -76,14 +76,14 @@ func main() {
 		fmt.Printf("这是%d次循环\n", i)
 	}
 
-	//题目：通过嵌套for循环输出一定整数范围内的质数
+	// 题目：通过嵌套for循环输出一定整数范围内的质数
 	a := findPrimeNum(1000)
-	//输出结果
+	// 输出结果
 	printSlice(a)
 	b := findPrimeNum2(1000)
 	printSlice(b)
 
-	//也可以不在for里面初始化值，或者省略掉递增（减）
+	// 也可以不在for里面初始化值，或者省略掉递增（减）
 	c := 0
 	for ; c < 10; c++ {
 		fmt.Printf("c=%d ", c)
@@ -95,7 +95,7 @@ func main() {
 	fmt.Println("")
 	fmt.Printf("c=%d\n", c)
 
-	//条件也不写时，进入无限循环
+	// 条件也不写时，进入无限循环
 	c = 1
 	//for {
 	//	c++
@@ -105,16 +105,16 @@ func main() {
 	/** For-Each Range循环，这种循环可以对字符串、数组、切片等进行迭代输出 */
 	str := []string{"hello", "world"}
 	for i, s := range str {
-		fmt.Println(i, s) //0 hello  1 world
+		fmt.Println(i, s) // 0 hello  1 world
 	}
-	var arr = [5]int{1, 2, 3, 4, 5}
+	arr := [5]int{1, 2, 3, 4, 5}
 	for i, s := range arr {
 		fmt.Println(i, s)
 	}
 
-	//break语句
-	//break用于跳出循环，或者switch中用于执行一条case后跳出
-	//这里讲一个特殊的，GoLang中的break可以通过label跳到多重循环中的任意一重
+	// break语句
+	// break用于跳出循环，或者switch中用于执行一条case后跳出
+	// 这里讲一个特殊的，GoLang中的break可以通过label跳到多重循环中的任意一重
 
 	for i1 := 1; i1 <= 3; i1++ {
 		fmt.Printf("i1=%d\n", i1)
@@ -140,5 +140,4 @@ func main() {
 		从结果可以看出，当第一次输出i3=111之后，由于使用了标签la,跳过了内层的两层循环，直接执行最外层的第二次循环
 		再次执行到最内层的输出i3=111之后，又一次跳到最外层的第三次循环，所以总共输出了9行
 	*/
-
 }

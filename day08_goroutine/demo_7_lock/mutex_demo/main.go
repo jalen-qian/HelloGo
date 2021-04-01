@@ -16,7 +16,7 @@ import (
 var (
 	x    int
 	wg   sync.WaitGroup
-	look sync.Mutex //互斥锁
+	look sync.Mutex // 互斥锁
 )
 
 /**
@@ -32,7 +32,7 @@ C:\Jalen\Programming\GoPath\src\HelloGo\day08_goroutine\demo_7_lock>demo_7_lock.
 */
 func add1() {
 	for i := 0; i < 50000; i++ {
-		x++ //递增
+		x++ // 递增
 	}
 	wg.Done()
 }
@@ -51,10 +51,10 @@ C:\Jalen\Programming\GoPath\src\HelloGo\day08_goroutine\demo_7_lock>demo_7_lock.
 */
 func add2() {
 	for i := 0; i < 50000; i++ {
-		//操作全局变量之前锁住
+		// 操作全局变量之前锁住
 		look.Lock()
-		x++ //递增
-		//操作完解锁
+		x++ // 递增
+		// 操作完解锁
 		look.Unlock()
 	}
 	wg.Done()
@@ -62,15 +62,15 @@ func add2() {
 
 func main() {
 	wg.Add(2)
-	//先测试不加锁
-	//go add1()
-	//go add1()
+	// 先测试不加锁
+	// go add1()
+	// go add1()
 
-	//再测试加锁的情况
+	// 再测试加锁的情况
 	go add2()
 	go add2()
 
 	wg.Wait()
-	//打印最终结果
+	// 打印最终结果
 	fmt.Printf("最终递增结果为：%d\n", x)
 }

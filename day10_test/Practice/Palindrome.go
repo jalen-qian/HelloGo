@@ -17,15 +17,15 @@ import (
  * 回文检测函数
  */
 func PalindromeDetec(s string) bool {
-	//1.将s转大写后，转换为rune切片
-	var chars = []rune(strings.ToUpper(s))
-	//2.假设有n个字符，判断第x个字符是否与第(n-x-1)个字符相等
+	// 1.将s转大写后，转换为rune切片
+	chars := []rune(strings.ToUpper(s))
+	// 2.假设有n个字符，判断第x个字符是否与第(n-x-1)个字符相等
 	length := len(chars)
 	for i := 0; i < length/2; i++ {
 		if chars[i] != chars[length-i-1] {
 			return false
 		}
 	}
-	//3.如果全部相等，返回true，有一个不等，返回false
+	// 3.如果全部相等，返回true，有一个不等，返回false
 	return true
 }

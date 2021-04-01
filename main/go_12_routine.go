@@ -25,9 +25,9 @@ func say(s string) {
 }
 
 func main() {
-	//开启一个协程，打印单词world
+	// 开启一个协程，打印单词world
 	go say("world")
-	//同时主协程打印单词hello
+	// 同时主协程打印单词hello
 	say("hello")
 	/*
 		可以看到输出如下，且每次运行结果都不一样，说明是异步执行的（并发）
@@ -43,7 +43,7 @@ func main() {
 		world
 	*/
 
-	//如果main函数这样写：
+	// 如果main函数这样写：
 	// go say("hello")
 	// go say("world")
 	// 这表示主线程只是开启了两个协程，然后就结束了，所以什么都不会打印，直接结束

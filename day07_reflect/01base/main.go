@@ -21,12 +21,12 @@ reflect.TypeOf可以获取任意变量的【类型对象】
 */
 
 func reflectType(x interface{}) {
-	//不知道传进来的是什么类型？
+	// 不知道传进来的是什么类型？
 	// 1.通过类型断言（缺点：只能一个个猜，只适用于事先知道可能传入的是哪几种类型）
 	// 2.通过反射 reflect.TypeOf()函数
 
 	t := reflect.TypeOf(x)
-	//类型：*reflect.rtype， 值：int32
+	// 类型：*reflect.rtype， 值：int32
 	fmt.Printf("t的类型：%T， t的值：%v\n", t, t)
 
 	/*
@@ -69,31 +69,32 @@ func reflectTypeKind(x interface{}) {
 type Dog struct {
 	name string
 }
+
 type Cat struct {
 	name string
 }
 
 func main() {
 	a := int32(12)
-	//reflectType(a) //类型：*reflect.rtype， 值：int32
+	// reflectType(a) //类型：*reflect.rtype， 值：int32
 
-	reflectTypeKind(a) //类型Name: int32  类型Kind: int32
+	reflectTypeKind(a) // 类型Name: int32  类型Kind: int32
 
 	b := "hello"
-	//reflectType(b) //类型：*reflect.rtype， 值：string
+	// reflectType(b) //类型：*reflect.rtype， 值：string
 
-	reflectTypeKind(b) //类型Name: string  类型Kind: string
+	reflectTypeKind(b) // 类型Name: string  类型Kind: string
 
 	c := [...]string{"hello", "world"}
-	//reflectType(c) //类型：*reflect.rtype， 值：[2]string
+	// reflectType(c) //类型：*reflect.rtype， 值：[2]string
 
-	reflectTypeKind(c) //类型Name:   类型Kind: array
+	reflectTypeKind(c) // 类型Name:   类型Kind: array
 
 	var d Dog
-	reflectType(d)     //t的类型：*reflect.rtype， t的值：main.Dog
-	reflectTypeKind(d) //类型Name: Dog  类型Kind: struct
+	reflectType(d)     // t的类型：*reflect.rtype， t的值：main.Dog
+	reflectTypeKind(d) // 类型Name: Dog  类型Kind: struct
 
 	var c1 Cat
-	reflectType(c1)     //t的类型：*reflect.rtype， t的值：main.Cat
-	reflectTypeKind(c1) //类型Name: Cat  类型Kind: struct
+	reflectType(c1)     // t的类型：*reflect.rtype， t的值：main.Cat
+	reflectTypeKind(c1) // 类型Name: Cat  类型Kind: struct
 }

@@ -22,10 +22,10 @@ import (
 */
 
 var (
-	x      int            //需要操作的全局变量
-	wg     sync.WaitGroup //waitGroup
-	lock   sync.Mutex     //互斥锁
-	rwLock sync.RWMutex   //读写互斥锁
+	x      int            // 需要操作的全局变量
+	wg     sync.WaitGroup // waitGroup
+	lock   sync.Mutex     // 互斥锁
+	rwLock sync.RWMutex   // 读写互斥锁
 )
 
 /**
@@ -33,13 +33,13 @@ var (
 */
 func read() {
 	defer wg.Done()
-	//先添加互斥锁
-	//lock.Lock()
+	// 先添加互斥锁
+	// lock.Lock()
 
-	//使用读写互斥锁
+	// 使用读写互斥锁
 	rwLock.RLock()
-	time.Sleep(time.Millisecond) //模拟消耗1毫秒
-	//lock.Unlock()
+	time.Sleep(time.Millisecond) // 模拟消耗1毫秒
+	// lock.Unlock()
 	rwLock.RUnlock()
 }
 
@@ -48,33 +48,32 @@ func read() {
 */
 func write() {
 	defer wg.Done()
-	//使用互斥锁
-	//lock.Lock()
+	// 使用互斥锁
+	// lock.Lock()
 
-	//使用读写互斥锁
+	// 使用读写互斥锁
 	rwLock.Lock()
 	x++
-	time.Sleep(time.Millisecond * 10) //模拟消耗10毫秒
-	//lock.Unlock()
+	time.Sleep(time.Millisecond * 10) // 模拟消耗10毫秒
+	// lock.Unlock()
 	rwLock.Unlock()
 }
 
 func main() {
-
-	//记录程序开始时间
+	// 记录程序开始时间
 	start := time.Now()
-	wg.Add(1010) //计时器增加1010个
-	//开启1000个goroutine执行读任务
+	wg.Add(1010) // 计时器增加1010个
+	// 开启1000个goroutine执行读任务
 	for i := 0; i < 1000; i++ {
 		go read()
 	}
 
-	//开启10个goroutine执行写任务
+	// 开启10个goroutine执行写任务
 	for j := 0; j < 10; j++ {
 		go write()
 	}
 	wg.Wait()
-	//程序执行完,计算时间间隔
+	// 程序执行完,计算时间间隔
 	dur := time.Now().Sub(start)
 
 	/**

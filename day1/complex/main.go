@@ -9,7 +9,7 @@ func main() {
 	var b complex128 = 3 + 4i
 	fmt.Println(b) //(3+4i)
 
-	//默认为complex128
-	var c = 4 + 5i
-	fmt.Printf("c的类型为%T", c) //c的类型为complex128
+	// 默认为complex128
+	c := 4 + 5i
+	fmt.Printf("c的类型为%T", c) // c的类型为complex128
 }

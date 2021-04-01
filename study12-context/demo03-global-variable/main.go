@@ -20,7 +20,7 @@ LOOP:
 		fmt.Println("working...")
 		time.Sleep(time.Second)
 		select {
-		//等待接收上级指示
+		// 等待接收上级指示
 		case <-exitChan:
 			break LOOP
 		default:
@@ -35,7 +35,7 @@ func main() {
 	exitChan = make(chan struct{}, 1)
 	go worker(exitChan)
 	time.Sleep(time.Second * 10)
-	exitChan <- struct{}{} //发送消息，结束
+	exitChan <- struct{}{} // 发送消息，结束
 	close(exitChan)
 	wg.Wait()
 	fmt.Println("over")

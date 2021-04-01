@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	dir := "C:\\Windows\\System32\\drivers\\etc"
-	fmt.Println(dir) //C:\Windows\System32\drivers\etc
+	fmt.Println(dir) // C:\Windows\System32\drivers\etc
 
 	/*
 
@@ -13,7 +13,7 @@ func main() {
 		第三行
 				哈哈哈
 	*/
-	var multiLine = `
+	multiLine := `
 		第一行
 		第二行
 	第三行

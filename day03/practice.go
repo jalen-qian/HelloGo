@@ -10,7 +10,7 @@ import "fmt"
 */
 
 func main() {
-	//第一题
+	// 第一题
 	arr1 := [...]int{1, 3, 5, 7, 8}
 	result := 0
 	for _, v := range arr1 {
@@ -18,7 +18,7 @@ func main() {
 	}
 	fmt.Printf("%v求和之后的结果是：%d\n", arr1, result) //[1 3 5 7 8]求和之后的结果是：24
 
-	//第二题
+	// 第二题
 	findIndex([10]int{1, 3, 5, 7, 8, 6, 2, 4, 9, 10}, 10)
 	fmt.Println()
 

@@ -7,7 +7,7 @@ import (
 )
 
 func gen(ctx context.Context) <-chan int {
-	//没有缓冲区的channel
+	// 没有缓冲区的channel
 	dst := make(chan int)
 	n := 1
 	go func() {
@@ -29,7 +29,7 @@ func main() {
 	defer cancel() // 当我们取完需要的整数后调用cancel
 	for n := range gen(ctx) {
 		fmt.Println(n)
-		if n == 5{
+		if n == 5 {
 			break
 		}
 	}

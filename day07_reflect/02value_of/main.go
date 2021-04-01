@@ -9,7 +9,7 @@ import (
 Go语言中，可以通过reflect.ValueOf()来反射变量的值相关信息
 */
 
-//这个函数实现通过反射的方式获取变量的值信息，并构造出一个对应类型，对应值的变量
+// 这个函数实现通过反射的方式获取变量的值信息，并构造出一个对应类型，对应值的变量
 func reflectValue(x interface{}) {
 	v := reflect.ValueOf(x)
 	/**
@@ -29,10 +29,10 @@ func reflectValue(x interface{}) {
 	k := v.Kind()
 	switch k {
 	case reflect.Float32:
-		ret := float32(v.Float()) //返回float64，需要强制转化为float32
+		ret := float32(v.Float()) // 返回float64，需要强制转化为float32
 		fmt.Printf("得到的数据类型：%T，值：%v\n", ret, ret)
 	case reflect.Int32:
-		ret := int32(v.Int()) //返回int64，需要强制转化为int32
+		ret := int32(v.Int()) // 返回int64，需要强制转化为int32
 		fmt.Printf("得到的数据类型：%T，值：%v\n", ret, ret)
 	}
 }
@@ -44,14 +44,14 @@ func reflectValue(x interface{}) {
 由于Go语言中参数传递都是值拷贝，如果需要外部也感觉到传入变量的值改变了，需要传入对应变量的指针类型
 */
 func reflectValueAndChange(x interface{}) {
-	//v的类型是reflect.Value
+	// v的类型是reflect.Value
 	v := reflect.ValueOf(x)
-	//先判断传入的值是不是float32的指针
-	//对于指针，需要调用Elem()函数来判断指针对应的类型
+	// 先判断传入的值是不是float32的指针
+	// 对于指针，需要调用Elem()函数来判断指针对应的类型
 	kind := v.Elem().Kind()
 	switch kind {
 	case reflect.Float32:
-		//发现指针指向的类型是float32，执行*10
+		// 发现指针指向的类型是float32，执行*10
 		v.Elem().SetFloat(v.Elem().Float() * 10)
 	}
 }
@@ -71,5 +71,5 @@ func main() {
 
 	////注意需要传入指针，不然会panic
 	reflectValueAndChange(&c)
-	fmt.Printf("通过反射改变值后，c的值：%v\n", c) //通过反射改变值后，c的值：12.5
+	fmt.Printf("通过反射改变值后，c的值：%v\n", c) // 通过反射改变值后，c的值：12.5
 }

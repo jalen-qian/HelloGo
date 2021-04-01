@@ -20,7 +20,7 @@ LOOP:
 		fmt.Println("worker1 working...")
 		time.Sleep(time.Second)
 		select {
-		//等待接收上级指示
+		// 等待接收上级指示
 		case <-ctx.Done():
 			break LOOP
 		default:
@@ -35,7 +35,7 @@ LOOP:
 		fmt.Println("worker2 working...")
 		time.Sleep(time.Second)
 		select {
-		//等待接收上级指示
+		// 等待接收上级指示
 		case <-ctx.Done():
 			break LOOP
 		default:
@@ -48,7 +48,7 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	go worker(ctx)
 	time.Sleep(time.Second * 10)
-	cancel() //调用cancel通知子goroutine任务结束
+	cancel() // 调用cancel通知子goroutine任务结束
 	wg.Wait()
 	fmt.Println("over")
 }

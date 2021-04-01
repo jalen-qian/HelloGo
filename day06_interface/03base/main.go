@@ -21,7 +21,7 @@ type Dog struct {
 	name string
 }
 
-//实现Sayer接口
+// 实现Sayer接口
 func (d Dog) say() {
 	fmt.Printf("%s在汪汪汪~\n", d.name)
 }
@@ -32,8 +32,8 @@ func (d Dog) move() {
 
 func main() {
 	var m Mover = Dog{"旺财"}
-	m.move() //旺财在跑~
+	m.move() // 旺财在跑~
 
 	var s Sayer = Dog{"旺财"}
-	s.say() //旺财在汪汪汪~
+	s.say() // 旺财在汪汪汪~
 }

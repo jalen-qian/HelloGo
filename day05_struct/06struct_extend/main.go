@@ -4,8 +4,8 @@ import (
 	"fmt"
 )
 
-//结构体继承
-//可以利用结构体嵌套实现类似于Java语言的继承
+// 结构体继承
+// 可以利用结构体嵌套实现类似于Java语言的继承
 
 type Animal struct {
 	name string
@@ -20,7 +20,7 @@ type Dog struct {
 	*Animal
 }
 
-//构造函数
+// 构造函数
 func NewDog(Feet int, animal *Animal) *Dog {
 	return &Dog{
 		Feet:   Feet,
@@ -39,13 +39,12 @@ func main() {
 			"乐乐",
 		},
 	}
-	//调用了Animal的move，类似于继承
+	// 调用了Animal的move，类似于继承
 	dog.move()
-	//调用自己的method
+	// 调用自己的method
 	dog.wang()
 
 	dog1 := NewDog(4, &Animal{"旺财"})
 	dog1.move()
 	dog1.wang()
-
 }

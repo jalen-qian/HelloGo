@@ -12,7 +12,6 @@ func showMenu() {
 	fmt.Println("3.显示所有学员信息")
 	fmt.Println("4.删除学员")
 	fmt.Println("5.退出系统")
-
 }
 
 func getInput() *student {
@@ -69,16 +68,16 @@ func main() {
 		fmt.Printf("您选择了%d\n", input)
 		switch input {
 		case 1:
-			//添加学员
+			// 添加学员
 			stuMag.addStudent(getInput())
 		case 2:
-			//修改学员
+			// 修改学员
 			stuMag.editStudent(getInput())
 		case 3:
-			//显示所有学员
+			// 显示所有学员
 			stuMag.showAllStudents()
 		case 4:
-			//删除学员
+			// 删除学员
 			var id int
 		tId:
 			fmt.Print("请输入学号：")
@@ -89,7 +88,7 @@ func main() {
 			}
 			stuMag.deleteStudent(id)
 		case 5:
-			//退出系统
+			// 退出系统
 			fmt.Println("欢迎您再次使用")
 			os.Exit(0)
 

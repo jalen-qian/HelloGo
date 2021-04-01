@@ -19,7 +19,7 @@ func f1(ch1 chan<- int) {
 	for i := 1; i <= 100; i++ {
 		ch1 <- i
 	}
-	//数字都放入通道1后就关闭通道
+	// 数字都放入通道1后就关闭通道
 	close(ch1)
 }
 
@@ -28,7 +28,7 @@ func f1(ch1 chan<- int) {
 使用单向通道，保证只能从ch1取数据，只能存数据到ch2
 */
 func f2(ch1 <-chan int, ch2 chan<- string) {
-	//遍历通道的方法1，通过for无限循环，然后如果取不到值了，就说明通道关闭了，再跳出循环
+	// 遍历通道的方法1，通过for无限循环，然后如果取不到值了，就说明通道关闭了，再跳出循环
 	for {
 		i, ok := <-ch1
 		if !ok {
@@ -39,17 +39,18 @@ func f2(ch1 <-chan int, ch2 chan<- string) {
 	}
 	close(ch2)
 }
+
 func main() {
-	//1.创建两个通道
+	// 1.创建两个通道
 	ch1 := make(chan int, 100)
 	ch2 := make(chan string, 100)
-	//2.开启协程，分别工作
+	// 2.开启协程，分别工作
 	go f2(ch1, ch2)
 	go f1(ch1)
-	//3.从通道2中获取数据并打印
-	//方法2，使用for range循环，底层会自动判断通道是否关闭
-	//如果通道没有关闭，for range循环会无限取值，取完通道中的值后会取出对应类型的零值
-	//如果通道是关闭的，for range循环取完值就会退出循环
+	// 3.从通道2中获取数据并打印
+	// 方法2，使用for range循环，底层会自动判断通道是否关闭
+	// 如果通道没有关闭，for range循环会无限取值，取完通道中的值后会取出对应类型的零值
+	// 如果通道是关闭的，for range循环取完值就会退出循环
 	for res := range ch2 {
 		fmt.Println(res)
 	}

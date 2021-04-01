@@ -18,37 +18,37 @@ import "fmt"
 */
 
 func worker(i int, jobs <-chan int, results chan<- string) {
-	//工人不断的从任务通道中取任务，直到任务通道中没有任务
+	// 工人不断的从任务通道中取任务，直到任务通道中没有任务
 	for job := range jobs {
 		fmt.Printf("我是工人%d 开始处理任务%d\n", i, job)
 		res := fmt.Sprintf("%d^2=%d\n", job, job*job)
-		//处理完任务，将结果数据发送到结果通道中
+		// 处理完任务，将结果数据发送到结果通道中
 		results <- res
 		fmt.Printf("我是工人%d 处理任务%d结束\n", i, job)
 	}
 }
 
 func main() {
-	//创建任务通道
+	// 创建任务通道
 	jobs := make(chan int, 5)
-	//创建结果通道
+	// 创建结果通道
 	results := make(chan string, 5)
 
-	//开启3个协程，处理任务
+	// 开启3个协程，处理任务
 	for i := 0; i < 3; i++ {
 		go worker(i+1, jobs, results)
 	}
 
-	//发起5个任务
+	// 发起5个任务
 	for j := 0; j < 5; j++ {
 		jobs <- j + 1
 	}
-	//发起完任务，就关闭通道
+	// 发起完任务，就关闭通道
 	close(jobs)
 
-	//由于results通道数据是在协程池中发送的，不知道是哪个协程发送最后一个任务，所以没有办法手动close
-	//这里不能用for range循环来遍历results，没有close的通道for range会无限循环（死锁）
-	//故而这里手动循环5次（因为已经知道有5个任务，所以通道中的数据肯定有5个）
+	// 由于results通道数据是在协程池中发送的，不知道是哪个协程发送最后一个任务，所以没有办法手动close
+	// 这里不能用for range循环来遍历results，没有close的通道for range会无限循环（死锁）
+	// 故而这里手动循环5次（因为已经知道有5个任务，所以通道中的数据肯定有5个）
 	for r := 0; r < 5; r++ {
 		fmt.Println(<-results)
 	}

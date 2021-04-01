@@ -40,11 +40,11 @@ func (s *studentMag) editStudent(student *student) {
 根据学号删除学生
 */
 func (s *studentMag) deleteStudent(id int) {
-	//根据学号找到索引
+	// 根据学号找到索引
 	for i, stu := range s.allStudents {
 		if stu.id == id {
-			//找到了学生，并且知道索引是i，执行删除
-			s.allStudents = append(s.allStudents[:i], s.allStudents[(i + 1):]...)
+			// 找到了学生，并且知道索引是i，执行删除
+			s.allStudents = append(s.allStudents[:i], s.allStudents[(i+1):]...)
 			return
 		}
 	}

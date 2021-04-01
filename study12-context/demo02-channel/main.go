@@ -12,8 +12,10 @@ import (
 不易规范和统一，全局变量在跨包调用时无法统一；
 如果worker中再启动goroutine，就无法控制了。
 */
-var wg sync.WaitGroup
-var exit bool
+var (
+	wg   sync.WaitGroup
+	exit bool
+)
 
 func worker() {
 	defer wg.Done()

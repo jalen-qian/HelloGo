@@ -10,5 +10,4 @@ Go 允许使用 go 语句开启一个新的运行期线程， 即 goroutine，�
 */
 
 func main() {
-
 }

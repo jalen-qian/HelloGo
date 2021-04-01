@@ -24,6 +24,7 @@ func fun3() (y int) {
 	}()
 	return x
 }
+
 func fun4() (x int) {
 	defer func(x int) {
 		x++
@@ -32,8 +33,8 @@ func fun4() (x int) {
 }
 
 func main() {
-	fmt.Println(fun1()) //5
-	fmt.Println(fun2()) //6
-	fmt.Println(fun3()) //5
-	fmt.Println(fun4()) //5
+	fmt.Println(fun1()) // 5
+	fmt.Println(fun2()) // 6
+	fmt.Println(fun3()) // 5
+	fmt.Println(fun4()) // 5
 }

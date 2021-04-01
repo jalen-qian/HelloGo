@@ -5,13 +5,13 @@ import (
 )
 
 func main() {
-	//iota 特殊常量，初始值为0，可以在编译时由编译器赋值，iota的值会依次递增
+	// iota 特殊常量，初始值为0，可以在编译时由编译器赋值，iota的值会依次递增
 	const (
 		a = iota
 		b = iota
 		c = iota
 	)
-	fmt.Println("a=", a, ",b=", b, ",c=", c) //a= 0 ,b= 1 ,c= 2
+	fmt.Println("a=", a, ",b=", b, ",c=", c) // a= 0 ,b= 1 ,c= 2
 
 	/*const (
 		d = iota
@@ -31,6 +31,5 @@ func main() {
 		g = 8
 		h = iota
 	)
-	fmt.Println("d=", d, ",e=", e, ",f=", f, ",g=", g, "h=", h) //d= 0 ,e= 9 ,f= 2 ,g= 8 h= 4
-
+	fmt.Println("d=", d, ",e=", e, ",f=", f, ",g=", g, "h=", h) // d= 0 ,e= 9 ,f= 2 ,g= 8 h= 4
 }

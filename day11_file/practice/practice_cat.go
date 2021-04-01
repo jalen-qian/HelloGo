@@ -20,7 +20,7 @@ func cat(fileName string) {
 		fmt.Printf("open file failed,err:%v\n", err)
 	}
 	defer file.Close()
-	//创建一个writer，往终端输出
+	// 创建一个writer，往终端输出
 	writer := bufio.NewWriter(os.Stdout)
 	for {
 		var buf [1024]byte
@@ -43,19 +43,18 @@ func cat(fileName string) {
 		fmt.Printf("flush failed,err:%v\n", err)
 		return
 	}
-
 }
-func main() {
 
+func main() {
 	////cat("aa.txt")
 	//for _, arg := range os.Args {
 	//	//输出文件内容
 	//	//cat(arg)
 	//	fmt.Println(arg)
 	//}
-	flag.Parse() //解析命令行参数
+	flag.Parse() // 解析命令行参数
 	for i := 0; i < flag.NArg(); i++ {
 		cat(flag.Arg(i))
 	}
-	//fmt.Println(flag.NArg())
+	// fmt.Println(flag.NArg())
 }

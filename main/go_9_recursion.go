@@ -9,12 +9,11 @@ func recursion{
 }
 */
 func main() {
-	//利用递归计算阶乘，例如5的阶乘是 1*2*3*4*5，N的阶乘可以表示为N*（N-1的阶乘
-	//注意0的阶乘是1
+	// 利用递归计算阶乘，例如5的阶乘是 1*2*3*4*5，N的阶乘可以表示为N*（N-1的阶乘
+	// 注意0的阶乘是1
 	result := calcFactorial(0)
-	fmt.Println(result)           //1
-	fmt.Println(calcFactorial(5)) //120
-
+	fmt.Println(result)           // 1
+	fmt.Println(calcFactorial(5)) // 120
 }
 
 /**

@@ -42,20 +42,20 @@ func handleConn(conn net.Conn) {
 3.如果建立成功，则开启一个goroutine处理连接
 */
 func main() {
-	//1.监听本地的20000端口
+	// 1.监听本地的20000端口
 	listen, err := net.Listen("tcp", "127.0.0.1:20000")
 	if err != nil {
 		fmt.Printf("listen failed,err:%v\n", err)
 		return
 	}
 
-	//无限循环，不断的去监听客户端是否发起连接
+	// 无限循环，不断的去监听客户端是否发起连接
 	for {
-		conn, err := listen.Accept()//接收连接
+		conn, err := listen.Accept() // 接收连接
 		if err != nil {
 			fmt.Printf("accept connection failed, err:%v\n", err)
 		}
-		//2.成功建立连接，创建一个goroutine去处理
+		// 2.成功建立连接，创建一个goroutine去处理
 		go handleConn(conn)
 	}
 }

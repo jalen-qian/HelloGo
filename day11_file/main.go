@@ -13,11 +13,11 @@ import (
 */
 func read() {
 	file, err := os.Open("./aa.txt")
-	//处理错误
+	// 处理错误
 	if err != nil {
 		fmt.Printf("open file failed, err:%v\n", err)
 	}
-	defer file.Close() //记得处理完了要关闭文件
+	defer file.Close() // 记得处理完了要关闭文件
 	var buf [127]byte
 	for {
 		n, err := file.Read(buf[:])
@@ -40,16 +40,16 @@ bufio封装了一层，里面设置了缓冲区
 
 func readByBufio() {
 	file, err := os.Open("./aa.txt")
-	//处理错误
+	// 处理错误
 	if err != nil {
 		fmt.Printf("open file failed, err:%v\n", err)
 	}
-	defer file.Close() //记得处理完了要关闭文件
-	//返回一个reader指针
+	defer file.Close() // 记得处理完了要关闭文件
+	// 返回一个reader指针
 	reader := bufio.NewReader(file)
 	for {
-		data, err := reader.ReadString('\n') //根据换行符来读取
-		if err == io.EOF { //End Of File
+		data, err := reader.ReadString('\n') // 根据换行符来读取
+		if err == io.EOF {                   // End Of File
 			fmt.Print(data)
 			return
 		}
@@ -86,7 +86,7 @@ func readByIoutil() {
   os.O_APPEND	追加
 */
 func write() {
-	//打开一个文件，只能写|如果没有自动创建|每次打开清空
+	// 打开一个文件，只能写|如果没有自动创建|每次打开清空
 	file, err := os.OpenFile("aaa.txt", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0666)
 	if err != nil {
 		fmt.Printf("open file failed, err:%v\n", err)
@@ -112,7 +112,7 @@ func writeByBufio() {
 		fmt.Printf("write file failed,err:%v\n", err)
 		return
 	}
-	//bufio存在内置的缓冲区，所以写完需要入盘，一定要记得写这一行
+	// bufio存在内置的缓冲区，所以写完需要入盘，一定要记得写这一行
 	err = writer.Flush()
 	if err != nil {
 		fmt.Printf("flush to file failed,err:%v\n", err)
@@ -129,10 +129,10 @@ func writeByIoutil() {
 }
 
 func main() {
-	//read()
-	//readByBufio()
-	//readByIoutil()
-	//write()
-	//writeByBufio()
+	// read()
+	// readByBufio()
+	// readByIoutil()
+	// write()
+	// writeByBufio()
 	writeByIoutil()
 }

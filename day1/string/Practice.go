@@ -5,7 +5,7 @@ import (
 	"unicode"
 )
 
-//判断是否字符是汉字
+// 判断是否字符是汉字
 func isHan(char rune) bool {
 	return unicode.Is(unicode.Han, char)
 }
@@ -21,6 +21,5 @@ func main() {
 			hanNums++
 		}
 	}
-	fmt.Printf("汉字个数是%d\n", hanNums) //汉字个数是5
-
+	fmt.Printf("汉字个数是%d\n", hanNums) // 汉字个数是5
 }

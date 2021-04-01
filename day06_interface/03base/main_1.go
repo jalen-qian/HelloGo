@@ -19,7 +19,7 @@ type cat struct {
 	name string
 }
 
-//实现同一个接口
+// 实现同一个接口
 func (d dog) say() {
 	fmt.Printf("%s在汪汪汪~\n", d.name)
 }
@@ -31,17 +31,17 @@ func (c cat) say() {
 /**
 实现一个函数，这个函数中传入实现了“叫”接口的变量
 这样就可以不管是猫还是狗，只要打，就会“叫”
- */
-func hit(s Sayer)  {
+*/
+func hit(s Sayer) {
 	s.say()
 }
 
 func main() {
 	var s sayer
 	s = cat{"小花猫"}
-	s.say() //小花猫在喵喵喵~
+	s.say() // 小花猫在喵喵喵~
 	s = dog{"小黑狗"}
-	s.say() //小黑狗在汪汪汪~
+	s.say() // 小黑狗在汪汪汪~
 
 	hit(cat{"小猫"})
 }

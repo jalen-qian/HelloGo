@@ -20,27 +20,27 @@ func main() {
 	       students := make(map[int]string)
 	*/
 
-	//定义一个map,用来存储国家=>首都的关系
+	// 定义一个map,用来存储国家=>首都的关系
 	var countryCapitalMap map[string]string
 
-	//可以打印一下，创建的map没有被创建，不能用来存值，运行报错：panic: assignment to entry in nil map
-	//countryCapitalMap["China"] = "BeiJing"
-	//fmt.Println(countryCapitalMap["china"])//panic: assignment to entry in nil map
+	// 可以打印一下，创建的map没有被创建，不能用来存值，运行报错：panic: assignment to entry in nil map
+	// countryCapitalMap["China"] = "BeiJing"
+	// fmt.Println(countryCapitalMap["china"])//panic: assignment to entry in nil map
 
-	//使用make创建
+	// 使用make创建
 	countryCapitalMap = make(map[string]string)
 
 	countryCapitalMap["China"] = "BeiJing"
-	foreachCountryCapitalMap(countryCapitalMap) //China 的首都是 BeiJing
+	foreachCountryCapitalMap(countryCapitalMap) // China 的首都是 BeiJing
 
-	//判断HashMap的键是否存在
-	findCapital(countryCapitalMap, "China") //China 的首都是 BeiJing
-	findCapital(countryCapitalMap, "Japan") //Japan 这个国家的数据不存在
+	// 判断HashMap的键是否存在
+	findCapital(countryCapitalMap, "China") // China 的首都是 BeiJing
+	findCapital(countryCapitalMap, "Japan") // Japan 这个国家的数据不存在
 
 	/**
 	如果事先就知道map中的部分数据，则可以直接声明的时候赋值
 	*/
-	var studentAgeMap = map[string]int{"张三": 23, "李四": 45, "王五": 36}
+	studentAgeMap := map[string]int{"张三": 23, "李四": 45, "王五": 36}
 	/*
 		输出：
 		张三 的年龄是 23岁
@@ -59,7 +59,6 @@ func main() {
 		王五 的年龄是 36岁
 	*/
 	foreachStudentAgeMap(studentAgeMap)
-
 }
 
 /**
@@ -78,9 +77,9 @@ func foreachCountryCapitalMap(mMap map[string]string) {
 func findCapital(mMap map[string]string, country string) {
 	capital, ok := mMap[country]
 	if ok {
-		fmt.Printf("%s 的首都是 %s\n", country, capital) //China 的首都是 BeiJing
+		fmt.Printf("%s 的首都是 %s\n", country, capital) // China 的首都是 BeiJing
 	} else {
-		fmt.Printf("%s 这个国家的数据不存在\n", country) //Japan 这个国家的数据不存在
+		fmt.Printf("%s 这个国家的数据不存在\n", country) // Japan 这个国家的数据不存在
 	}
 }
 

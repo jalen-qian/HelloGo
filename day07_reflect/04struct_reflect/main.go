@@ -37,20 +37,20 @@ func (s Student) Game(game string) {
 */
 func reflectField(x interface{}) {
 	typeObj := reflect.TypeOf(x)
-	//遍历每个字段，得到字段的信息
+	// 遍历每个字段，得到字段的信息
 	for i := 0; i < typeObj.NumField(); i++ {
-		fieldObj := typeObj.Field(i) //根据索引得到属性
+		fieldObj := typeObj.Field(i) // 根据索引得到属性
 		/*
 			name: Name pkgPath: type:string tag:json:"name" ini:"s_name"
 			name: Age pkgPath: type:int tag:json:"age" ini:"s_age"
 			name: Score pkgPath: type:int tag:json:"score" ini:"s_score"
 		*/
 		fmt.Printf("name: %v pkgPath:%v type:%v tag:%v\n", fieldObj.Name, fieldObj.PkgPath, fieldObj.Type, fieldObj.Tag)
-		//可以看到tag有两个，如果需要得到其中具体的一个tag
+		// 可以看到tag有两个，如果需要得到其中具体的一个tag
 		fmt.Println("jsonTag:", fieldObj.Tag.Get("json"))
 	}
 
-	//还可以根据字段名称获取字段信息
+	// 还可以根据字段名称获取字段信息
 	fieldObj, ok := typeObj.FieldByName("Score")
 	if ok {
 		fmt.Println("根据名称获取字段信息：")
@@ -60,9 +60,9 @@ func reflectField(x interface{}) {
 
 func reflectMethod(x interface{}) {
 	t := reflect.TypeOf(x)
-	//获取方法数量
-	fmt.Printf("num of method:%d\n", t.NumMethod()) //num of method:2
-	//因为接下来需要获取方法的一些信息，并调用方法，所以用ValueOf
+	// 获取方法数量
+	fmt.Printf("num of method:%d\n", t.NumMethod()) // num of method:2
+	// 因为接下来需要获取方法的一些信息，并调用方法，所以用ValueOf
 	v := reflect.ValueOf(x)
 	//ValueOf()同样可以获得方法数量，这个是因为Value结构体嵌套了 rtype结构体，rtype实现了Type接口
 	//for i := 0; i < v.NumMethod(); i++ {
@@ -78,9 +78,9 @@ func reflectMethod(x interface{}) {
 	//	v.Method(i).Call(args)
 	//}
 
-	//反射的方法如果需要传参数，如何传呢？
+	// 反射的方法如果需要传参数，如何传呢？
 	args := make([]reflect.Value, 1)
-	//构造参数
+	// 构造参数
 	args[0] = reflect.ValueOf("绝地求生")
 	v.MethodByName("Game").Call(args)
 }
@@ -91,9 +91,9 @@ func main() {
 		Age:   18,
 		Score: 96,
 	}
-	//反射字段
-	//reflectField(stu1)
+	// 反射字段
+	// reflectField(stu1)
 
-	//反射方法
+	// 反射方法
 	reflectMethod(stu1)
 }

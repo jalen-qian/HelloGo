@@ -6,12 +6,12 @@ import "testing"
 单元测试
 */
 func TestPalindromeDetec(t *testing.T) {
-	//写多个单元测试用例
+	// 写多个单元测试用例
 	type test struct {
 		input string
 		want  bool
 	}
-	//写5个测试用例
+	// 写5个测试用例
 	tests := map[string]test{
 		"test1": {"helloOlleH", true},
 		"test2": {"我爱你i爱我", false},

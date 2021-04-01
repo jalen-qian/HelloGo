@@ -2,8 +2,8 @@ package main
 
 import "fmt"
 
-//结构体嵌套字段冲突
-//当一个结构体嵌套的多个子结构体有同名字段时，访问字段必须加上子结构体的字段名称
+// 结构体嵌套字段冲突
+// 当一个结构体嵌套的多个子结构体有同名字段时，访问字段必须加上子结构体的字段名称
 
 type Address struct {
 	Province   string
@@ -15,6 +15,7 @@ type Email struct {
 	Addr       string
 	UpdateTime string
 }
+
 type Person struct {
 	Name   string
 	Age    int
@@ -40,7 +41,7 @@ func main() {
 	}
 
 	fmt.Printf("%#v\n", p)
-	//fmt.Println(p.UpdateTime) //编译不通过：ambiguous selector p.UpdateTime
+	// fmt.Println(p.UpdateTime) //编译不通过：ambiguous selector p.UpdateTime
 	fmt.Println(p.Address.UpdateTime)
 	fmt.Println(p.Email.UpdateTime)
 }
